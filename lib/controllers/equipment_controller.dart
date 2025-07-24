@@ -55,9 +55,18 @@ class EquipmentController extends ChangeNotifier {
       await _equipmentService.updateEquipmentProperty(equipmentId, propertyId, newValue);
       print('✅ Service call completed');
       
-      // Update local data
-      final equipmentIndex = _equipments.indexWhere((e) => e.id == equipmentId);
-      print('📍 Equipment index: $equipmentIndex');
+      // Extract base equipment ID (remove unit suffix like _1, _2, etc.)
+      String baseEquipmentId = equipmentId.split('_')[0];
+      print('🔍 Base equipment ID: $baseEquipmentId');
+      
+      // Update local data - look for base equipment first
+      int equipmentIndex = _equipments.indexWhere((e) => e.id == equipmentId);
+      if (equipmentIndex == -1) {
+        // If not found, try base equipment ID
+        equipmentIndex = _equipments.indexWhere((e) => e.id == baseEquipmentId);
+        print('� Using base equipment ID, index: $equipmentIndex');
+      }
+      print('�📍 Equipment index: $equipmentIndex');
       
       if (equipmentIndex != -1) {
         final equipment = _equipments[equipmentIndex];
@@ -110,6 +119,8 @@ class EquipmentController extends ChangeNotifier {
           notifyListeners();
           print('✅ Listeners notified - UI should update now');
         }
+      } else {
+        print('❌ Equipment not found in controller list');
       }
     } catch (e) {
       print('❌ Error in toggleEquipmentControl: $e');
