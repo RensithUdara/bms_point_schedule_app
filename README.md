@@ -1,6 +1,6 @@
-# bms_point_schedule_app
+# Smart BMS
 
-# BMS Point Schedule - South Beach Weligama
+# Smart BMS - South Beach Weligama
 
 A Flutter application for Equipment Management System at South Beach Weligama resort. This app allows monitoring and controlling various building equipment including ESP Filters, HVAC systems, fuel systems, water management, and fire safety equipment.
 
