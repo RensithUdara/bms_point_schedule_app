@@ -1,6 +1,6 @@
 {
-    "name": "bms_point_schedule_app",
-    "short_name": "bms_point_schedule_app",
+    "name": "Smart BMS",
+    "short_name": "Smart BMS",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
