@@ -30,7 +30,12 @@ class AuthController extends ChangeNotifier {
         return false;
       }
     } catch (e) {
-      _error = e.toString();
+      // Handle specific error messages
+      String errorMessage = e.toString();
+      if (errorMessage.contains('Exception:')) {
+        errorMessage = errorMessage.replaceFirst('Exception: ', '');
+      }
+      _error = errorMessage;
       notifyListeners();
       return false;
     } finally {
