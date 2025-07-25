@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../controllers/settings_controller.dart';
 
 class ThemeManager {
   // Light theme data
   static ThemeData getLightTheme(String themeColor) {
     final primaryColor = SettingsController.getThemeColorValue(themeColor);
-    
+
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -69,17 +70,18 @@ class ThemeManager {
         ),
         filled: true,
         fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        thumbColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return primaryColor;
           }
           return Colors.grey.shade400;
         }),
-        trackColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        trackColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return primaryColor.withOpacity(0.3);
           }
           return Colors.grey.shade300;
@@ -100,7 +102,7 @@ class ThemeManager {
   // Dark theme data
   static ThemeData getDarkTheme(String themeColor) {
     final primaryColor = SettingsController.getThemeColorValue(themeColor);
-    
+
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -164,17 +166,18 @@ class ThemeManager {
         ),
         filled: true,
         fillColor: const Color(0xFF1E293B),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        thumbColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return primaryColor;
           }
           return Colors.grey.shade600;
         }),
-        trackColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        trackColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return primaryColor.withOpacity(0.3);
           }
           return Colors.grey.shade700;
@@ -194,9 +197,7 @@ class ThemeManager {
 
   // Get theme based on settings
   static ThemeData getTheme(bool isDarkMode, String themeColor) {
-    return isDarkMode 
-        ? getDarkTheme(themeColor) 
-        : getLightTheme(themeColor);
+    return isDarkMode ? getDarkTheme(themeColor) : getLightTheme(themeColor);
   }
 
   // Predefined color options
@@ -262,14 +263,16 @@ class ThemeManager {
     return TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: isDarkMode ? Colors.white.withOpacity(0.9) : const Color(0xFF1F2937),
+      color:
+          isDarkMode ? Colors.white.withOpacity(0.9) : const Color(0xFF1F2937),
     );
   }
 
   static TextStyle getSubtitleTextStyle(bool isDarkMode) {
     return TextStyle(
       fontSize: 14,
-      color: isDarkMode ? Colors.white.withOpacity(0.7) : const Color(0xFF6B7280),
+      color:
+          isDarkMode ? Colors.white.withOpacity(0.7) : const Color(0xFF6B7280),
     );
   }
 }

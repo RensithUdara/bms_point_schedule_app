@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../controllers/settings_controller.dart';
 import '../utils/theme_manager.dart';
 
@@ -14,11 +15,14 @@ class SettingsOverview extends StatelessWidget {
           margin: const EdgeInsets.all(16),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            gradient: ThemeManager.getPrimaryGradient(settingsController.themeColor),
+            gradient:
+                ThemeManager.getPrimaryGradient(settingsController.themeColor),
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: SettingsController.getThemeColorValue(settingsController.themeColor).withOpacity(0.3),
+                color: SettingsController.getThemeColorValue(
+                        settingsController.themeColor)
+                    .withOpacity(0.3),
                 blurRadius: 16,
                 offset: const Offset(0, 8),
               ),
@@ -27,15 +31,15 @@ class SettingsOverview extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              const Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.settings_rounded,
                     color: Colors.white,
                     size: 24,
                   ),
-                  const SizedBox(width: 12),
-                  const Text(
+                  SizedBox(width: 12),
+                  Text(
                     'Settings Overview',
                     style: TextStyle(
                       color: Colors.white,
@@ -46,16 +50,18 @@ class SettingsOverview extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              
+
               // Quick settings grid
               Row(
                 children: [
                   Expanded(
                     child: _buildQuickSettingItem(
-                      icon: settingsController.isDarkMode 
-                          ? Icons.dark_mode_rounded 
+                      icon: settingsController.isDarkMode
+                          ? Icons.dark_mode_rounded
                           : Icons.light_mode_rounded,
-                      label: settingsController.isDarkMode ? 'Dark Mode' : 'Light Mode',
+                      label: settingsController.isDarkMode
+                          ? 'Dark Mode'
+                          : 'Light Mode',
                       value: 'Theme',
                     ),
                   ),
@@ -63,17 +69,17 @@ class SettingsOverview extends StatelessWidget {
                   Expanded(
                     child: _buildQuickSettingItem(
                       icon: Icons.notifications_rounded,
-                      label: settingsController.pushNotificationsEnabled 
-                          ? 'Enabled' 
+                      label: settingsController.pushNotificationsEnabled
+                          ? 'Enabled'
                           : 'Disabled',
                       value: 'Notifications',
                     ),
                   ),
                 ],
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               Row(
                 children: [
                   Expanded(
@@ -87,8 +93,8 @@ class SettingsOverview extends StatelessWidget {
                   Expanded(
                     child: _buildQuickSettingItem(
                       icon: Icons.security_rounded,
-                      label: settingsController.biometricAuthEnabled 
-                          ? 'Enabled' 
+                      label: settingsController.biometricAuthEnabled
+                          ? 'Enabled'
                           : 'Disabled',
                       value: 'Biometric',
                     ),
@@ -163,7 +169,6 @@ class SettingsQuickActions extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          
           Row(
             children: [
               Expanded(
@@ -203,9 +208,7 @@ class SettingsQuickActions extends StatelessWidget {
               ),
             ],
           ),
-          
           const SizedBox(height: 12),
-          
           Row(
             children: [
               Expanded(

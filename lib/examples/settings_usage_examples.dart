@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../controllers/settings_controller.dart';
 import '../utils/theme_manager.dart';
 
@@ -14,9 +15,7 @@ class SettingsAwareWidget extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: settings.isDarkMode 
-                ? const Color(0xFF1E293B) 
-                : Colors.white,
+            color: settings.isDarkMode ? const Color(0xFF1E293B) : Colors.white,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
@@ -33,7 +32,8 @@ class SettingsAwareWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: SettingsController.getThemeColorValue(settings.themeColor),
+                  color: SettingsController.getThemeColorValue(
+                      settings.themeColor),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
@@ -41,17 +41,17 @@ class SettingsAwareWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              
+
               const SizedBox(height: 12),
-              
+
               // Example of using theme-aware text
               Text(
                 'Settings-Aware Content',
                 style: ThemeManager.getHeadlineTextStyle(settings.isDarkMode),
               ),
-              
+
               const SizedBox(height: 8),
-              
+
               // Example of conditional content based on settings
               if (settings.pushNotificationsEnabled)
                 Container(
@@ -80,21 +80,21 @@ class SettingsAwareWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-              
+
               const SizedBox(height: 12),
-              
+
               // Example of using date format setting
               Text(
                 'Current Date: ${SettingsController.formatDate(DateTime.now(), settings.dateFormat)}',
                 style: ThemeManager.getSubtitleTextStyle(settings.isDarkMode),
               ),
-              
+
               // Example of using language setting
               Text(
                 'Language: ${settings.selectedLanguage}',
                 style: ThemeManager.getSubtitleTextStyle(settings.isDarkMode),
               ),
-              
+
               // Example of showing auto-lock duration
               Text(
                 'Auto-lock: ${settings.autoLockDuration}',
@@ -112,25 +112,25 @@ class SettingsAwareWidget extends StatelessWidget {
 class SettingsUsageExample {
   static void exampleUsage(BuildContext context) {
     final settings = context.read<SettingsController>();
-    
+
     // Toggle dark mode
     settings.setDarkMode(!settings.isDarkMode);
-    
+
     // Change theme color
     settings.setThemeColor('Green');
-    
+
     // Enable notifications
     settings.setPushNotifications(true);
-    
+
     // Set language
     settings.setLanguage('Sinhala');
-    
+
     // Example of conditional logic based on settings
     if (settings.offlineModeEnabled) {
       // Handle offline functionality
       print('App is in offline mode');
     }
-    
+
     if (settings.autoSyncEnabled) {
       // Trigger auto-sync
       print('Auto-sync is enabled');
@@ -142,7 +142,7 @@ class SettingsUsageExample {
 class ThemedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  
+
   const ThemedButton({
     super.key,
     required this.text,
@@ -153,8 +153,9 @@ class ThemedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SettingsController>(
       builder: (context, settings, child) {
-        final themeColor = SettingsController.getThemeColorValue(settings.themeColor);
-        
+        final themeColor =
+            SettingsController.getThemeColorValue(settings.themeColor);
+
         return ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
@@ -179,7 +180,7 @@ class NotificationHelper {
     if (!settings.pushNotificationsEnabled) {
       return false;
     }
-    
+
     // Check specific notification types
     switch (type) {
       case 'equipment_alert':
@@ -190,19 +191,20 @@ class NotificationHelper {
         return true;
     }
   }
-  
+
   static void showSettingsAwareNotification(
     BuildContext context,
     String message,
     String type,
   ) {
     final settings = context.read<SettingsController>();
-    
+
     if (shouldShowNotification(settings, type)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message),
-          backgroundColor: SettingsController.getThemeColorValue(settings.themeColor),
+          backgroundColor:
+              SettingsController.getThemeColorValue(settings.themeColor),
         ),
       );
     }
@@ -211,10 +213,11 @@ class NotificationHelper {
 
 /// Example of settings-aware data formatting
 class DataFormatter {
-  static String formatDateWithSettings(DateTime date, SettingsController settings) {
+  static String formatDateWithSettings(
+      DateTime date, SettingsController settings) {
     return SettingsController.formatDate(date, settings.dateFormat);
   }
-  
+
   static String getLocalizedText(String key, SettingsController settings) {
     // This would typically use a localization package
     switch (settings.selectedLanguage) {
@@ -226,7 +229,7 @@ class DataFormatter {
         return _getEnglishText(key);
     }
   }
-  
+
   static String _getEnglishText(String key) {
     final texts = {
       'welcome': 'Welcome',
@@ -235,7 +238,7 @@ class DataFormatter {
     };
     return texts[key] ?? key;
   }
-  
+
   static String _getSinhalaText(String key) {
     final texts = {
       'welcome': 'ආයුබෝවන්',
@@ -244,7 +247,7 @@ class DataFormatter {
     };
     return texts[key] ?? key;
   }
-  
+
   static String _getTamilText(String key) {
     final texts = {
       'welcome': 'வணக்கம்',

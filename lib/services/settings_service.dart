@@ -90,7 +90,7 @@ class SettingsService {
     try {
       final prefs = await SharedPreferences.getInstance();
       final keys = prefs.getKeys();
-      
+
       return {
         'totalKeys': keys.length,
         'estimatedSize': _estimateStorageSize(prefs, keys),
@@ -157,13 +157,13 @@ class SettingsService {
   // Private helper method to estimate storage size
   static int _estimateStorageSize(SharedPreferences prefs, Set<String> keys) {
     int totalSize = 0;
-    
+
     for (final key in keys) {
       final value = prefs.get(key);
-      
+
       // Rough estimation of storage size
       totalSize += key.length; // Key size
-      
+
       if (value is String) {
         totalSize += value.length;
       } else if (value is List<String>) {
@@ -174,15 +174,17 @@ class SettingsService {
         totalSize += 8; // Approximate size for primitives
       }
     }
-    
+
     return totalSize;
   }
 
   // Backup user preferences
-  static Future<void> backupUserPreferences(Map<String, dynamic> preferences) async {
+  static Future<void> backupUserPreferences(
+      Map<String, dynamic> preferences) async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      final json = preferences.toString(); // In a real app, use proper JSON encoding
+      final json =
+          preferences.toString(); // In a real app, use proper JSON encoding
       await prefs.setString(_keyUserPreferences, json);
     } catch (e) {
       debugPrint('Error backing up user preferences: $e');

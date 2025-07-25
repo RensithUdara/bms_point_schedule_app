@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../controllers/settings_controller.dart';
 import '../widgets/settings_overview.dart';
 
@@ -56,12 +57,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   // Settings Overview Widget
                   const SettingsOverview(),
-                  
+
                   // Quick Actions
                   const SettingsQuickActions(),
-                  
+
                   const SizedBox(height: 24),
-                  
+
                   // Appearance Section
                   _buildSettingsSection(
                     title: 'Appearance',
@@ -527,9 +528,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.chevron_right_rounded,
-                color: const Color(0xFF6B7280),
+                color: Color(0xFF6B7280),
                 size: 20,
               ),
             ],
@@ -581,7 +582,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _showClearCacheDialog(BuildContext context, SettingsController settingsController) {
+  void _showClearCacheDialog(
+      BuildContext context, SettingsController settingsController) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -615,9 +617,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showChangePasswordDialog(BuildContext context) {
-    final TextEditingController currentPasswordController = TextEditingController();
+    final TextEditingController currentPasswordController =
+        TextEditingController();
     final TextEditingController newPasswordController = TextEditingController();
-    final TextEditingController confirmPasswordController = TextEditingController();
+    final TextEditingController confirmPasswordController =
+        TextEditingController();
 
     showDialog(
       context: context,
@@ -738,7 +742,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('We value your feedback! Please let us know how we can improve.'),
+              const Text(
+                  'We value your feedback! Please let us know how we can improve.'),
               const SizedBox(height: 16),
               TextField(
                 controller: feedbackController,
@@ -774,7 +779,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _showResetSettingsDialog(BuildContext context, SettingsController settingsController) {
+  void _showResetSettingsDialog(
+      BuildContext context, SettingsController settingsController) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
