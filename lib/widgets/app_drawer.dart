@@ -5,6 +5,7 @@ import '../controllers/auth_controller.dart';
 import '../views/about_us_screen.dart';
 import '../views/contact_us_screen.dart';
 import '../views/profile_screen.dart';
+import '../views/settings_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -162,7 +163,12 @@ class AppDrawer extends StatelessWidget {
                       title: 'Settings',
                       onTap: () {
                         Navigator.pop(context);
-                        // Navigate to settings
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
                       },
                     ),
 
