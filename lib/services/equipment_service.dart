@@ -1,13 +1,13 @@
 import '../models/equipment.dart';
 
 class EquipmentService {
-  // Main equipment list for dashboard (BMS Point Schedule South Beach Weligama)
+  // Main equipment list for dashboard (Smart BMS South Beach Weligama)
   Future<List<Equipment>> getAllEquipments() async {
     // Simulate network delay
     await Future.delayed(const Duration(seconds: 1));
 
     return [
-      // Complete equipment list from BMS Point Schedule spreadsheet
+      // Complete equipment list from Smart BMS spreadsheet
       Equipment(
         id: '1',
         name: 'ESP Filter',
@@ -49,7 +49,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:1, AI:0, AO:0, Monitoring:1, Alarm:1, Control:1, Data points:1, Interface points:1, Free config:1, Power analyzer:1',
+            value:
+                'DI:1, DO:1, AI:0, AO:0, Monitoring:1, Alarm:1, Control:1, Data points:1, Interface points:1, Free config:1, Power analyzer:1',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -67,7 +68,8 @@ class EquipmentService {
         isOnline: true,
         lastUpdated: DateTime.now(),
         quantity: 2,
-        notes: 'DI/DO/M/CA(field devices Need to be provide by contractor). Command Need to manual override from fire Command Center(LPF contractor Scope)',
+        notes:
+            'DI/DO/M/CA(field devices Need to be provide by contractor). Command Need to manual override from fire Command Center(LPF contractor Scope)',
         properties: [
           EquipmentProperty(
             id: 'fan_on_off_command',
@@ -105,7 +107,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:2, AI:0, AO:0, Monitoring:2, Alarm:2, Control:2, Data points:2, Interface points:2, Free config:2, Power analyzer:2',
+            value:
+                'DI:1, DO:2, AI:0, AO:0, Monitoring:2, Alarm:2, Control:2, Data points:2, Interface points:2, Free config:2, Power analyzer:2',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -161,7 +164,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:4, AI:0, AO:0, Monitoring:4, Alarm:4, Control:4, Data points:4, Interface points:4, Free config:4, Power analyzer:4',
+            value:
+                'DI:1, DO:4, AI:0, AO:0, Monitoring:4, Alarm:4, Control:4, Data points:4, Interface points:4, Free config:4, Power analyzer:4',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -208,7 +212,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:0, AI:0, AO:0, Monitoring:3, Alarm:3, Control:0, Data points:3, Interface points:3, Free config:3, Power analyzer:3',
+            value:
+                'DI:1, DO:0, AI:0, AO:0, Monitoring:3, Alarm:3, Control:0, Data points:3, Interface points:3, Free config:3, Power analyzer:3',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -255,7 +260,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:0, AI:0, AO:0, Monitoring:3, Alarm:3, Control:0, Data points:3, Interface points:3, Free config:3, Power analyzer:3',
+            value:
+                'DI:1, DO:0, AI:0, AO:0, Monitoring:3, Alarm:3, Control:0, Data points:3, Interface points:3, Free config:3, Power analyzer:3',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -311,7 +317,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:2, AI:0, AO:0, Monitoring:2, Alarm:2, Control:2, Data points:2, Interface points:2, Free config:2, Power analyzer:2',
+            value:
+                'DI:1, DO:2, AI:0, AO:0, Monitoring:2, Alarm:2, Control:2, Data points:2, Interface points:2, Free config:2, Power analyzer:2',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -329,7 +336,8 @@ class EquipmentService {
         isOnline: true,
         lastUpdated: DateTime.now(),
         quantity: 1,
-        notes: 'Both pumps shall be start and operate when water level reach maximum level and audible and visual alarm shall be provided for 24-hour manned station and Engineering office. Sewer pump station water levels. Sewer lifting station warning and high level alarm shall be indicated on the BMS.',
+        notes:
+            'Both pumps shall be start and operate when water level reach maximum level and audible and visual alarm shall be provided for 24-hour manned station and Engineering office. Sewer pump station water levels. Sewer lifting station warning and high level alarm shall be indicated on the BMS.',
         properties: [
           EquipmentProperty(
             id: 'sewer_station_water_level_high',
@@ -350,7 +358,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:0, DO:0, AI:1, AO:0, Monitoring:1, Alarm:1, Control:0, Data points:1, Interface points:1, Free config:1, Power analyzer:1',
+            value:
+                'DI:0, DO:0, AI:1, AO:0, Monitoring:1, Alarm:1, Control:0, Data points:1, Interface points:1, Free config:1, Power analyzer:1',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -406,7 +415,8 @@ class EquipmentService {
           EquipmentProperty(
             id: 'field_devices_total',
             name: 'Field Devices Total',
-            value: 'DI:1, DO:2, AI:0, AO:0, Monitoring:2, Alarm:2, Control:4, Data points:2, Interface points:2, Free config:4, Power analyzer:4',
+            value:
+                'DI:1, DO:2, AI:0, AO:0, Monitoring:2, Alarm:2, Control:4, Data points:2, Interface points:2, Free config:4, Power analyzer:4',
             unit: '',
             type: 'status',
             isControllable: false,
@@ -419,7 +429,7 @@ class EquipmentService {
   // Get detailed equipment with point properties based on spreadsheet
   Future<Equipment?> getEquipmentWithDetails(String id) async {
     await Future.delayed(const Duration(milliseconds: 500));
-    
+
     switch (id) {
       case '1': // ESP Filter
         return Equipment(
@@ -462,7 +472,7 @@ class EquipmentService {
             ),
           ],
         );
-        
+
       case '2': // Lobby pressurization fans
         return Equipment(
           id: '2',
@@ -475,7 +485,8 @@ class EquipmentService {
           isOnline: true,
           lastUpdated: DateTime.now(),
           quantity: 2,
-          notes: 'DI/DO/M/CA(field devices Need to be provide by contractor). Command Need to manual override from fire Command Center(LPF contractor Scope)',
+          notes:
+              'DI/DO/M/CA(field devices Need to be provide by contractor). Command Need to manual override from fire Command Center(LPF contractor Scope)',
           properties: [
             EquipmentProperty(
               id: 'fan_on_off_command',
@@ -707,7 +718,8 @@ class EquipmentService {
           isOnline: true,
           lastUpdated: DateTime.now(),
           quantity: 1,
-          notes: 'Both pumps shall be start and operate when water level reach maximum level and audible and visual alarm shall be provided for 24-hour manned station and Engineering office. Sewer pump station water levels. Sewer lifting station warning and high level alarm shall be indicated on the BMS.',
+          notes:
+              'Both pumps shall be start and operate when water level reach maximum level and audible and visual alarm shall be provided for 24-hour manned station and Engineering office. Sewer pump station water levels. Sewer lifting station warning and high level alarm shall be indicated on the BMS.',
           properties: [
             EquipmentProperty(
               id: 'sewer_station_water_level_high',
@@ -777,7 +789,7 @@ class EquipmentService {
             ),
           ],
         );
-        
+
       default:
         return null;
     }
@@ -809,12 +821,12 @@ class EquipmentService {
 
     // Auto-sync logic: when command changes, update corresponding status
     // This simulates the BMS system automatically reflecting command status
-    
+
     // For example:
     // - fan_on_off_command → fan_on_off_status
     // - pump_on_off_command → pump_on_off_status
     // - esp_on_off_command → esp_on_off_status
-    
+
     // In a real BMS system, this would happen automatically
     // when the field device responds to the command
   }
