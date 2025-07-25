@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   padding: const EdgeInsets.all(32),
                   decoration: BoxDecoration(
-                    color: Colors.transparent ,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(24),
                     // boxShadow: [
                     //   BoxShadow(
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        'BMS Point Schedule',
+                        'Smart BMS',
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
