@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../controllers/auth_controller.dart';
+import '../views/about_us_screen.dart';
+import '../views/contact_us_screen.dart';
 import '../views/profile_screen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -119,6 +122,40 @@ class AppDrawer extends StatelessWidget {
 
                     const SizedBox(height: 8),
 
+                    // About Us
+                    _buildMenuItem(
+                      icon: Icons.info_rounded,
+                      title: 'About Us',
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AboutUsScreen(),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    // Contact Us
+                    _buildMenuItem(
+                      icon: Icons.contact_support_rounded,
+                      title: 'Contact Us',
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ContactUsScreen(),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const SizedBox(height: 8),
+
                     // Settings
                     _buildMenuItem(
                       icon: Icons.settings_rounded,
@@ -157,15 +194,15 @@ class AppDrawer extends StatelessWidget {
                                     width: 1,
                                   ),
                                 ),
-                                child: Row(
+                                child: const Row(
                                   children: [
                                     Icon(
                                       Icons.logout_rounded,
-                                      color: const Color(0xFFDC2626),
+                                      color: Color(0xFFDC2626),
                                       size: 24,
                                     ),
-                                    const SizedBox(width: 16),
-                                    const Text(
+                                    SizedBox(width: 16),
+                                    Text(
                                       'Logout',
                                       style: TextStyle(
                                         color: Color(0xFFDC2626),
@@ -181,7 +218,7 @@ class AppDrawer extends StatelessWidget {
                         );
                       },
                     ),
-                    
+
                     const SizedBox(height: 20),
                   ],
                 ),
@@ -212,7 +249,7 @@ class AppDrawer extends StatelessWidget {
               vertical: 16,
             ),
             decoration: BoxDecoration(
-              color: isSelected 
+              color: isSelected
                   ? const Color(0xFF1E40AF).withOpacity(0.1)
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(16),
@@ -221,8 +258,8 @@ class AppDrawer extends StatelessWidget {
               children: [
                 Icon(
                   icon,
-                  color: isSelected 
-                      ? const Color(0xFF1E40AF) 
+                  color: isSelected
+                      ? const Color(0xFF1E40AF)
                       : const Color(0xFF6B7280),
                   size: 24,
                 ),
@@ -230,8 +267,8 @@ class AppDrawer extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
-                    color: isSelected 
-                        ? const Color(0xFF1E40AF) 
+                    color: isSelected
+                        ? const Color(0xFF1E40AF)
                         : const Color(0xFF374151),
                     fontSize: 16,
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
