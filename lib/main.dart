@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'controllers/auth_controller.dart';
 import 'controllers/equipment_controller.dart';
+import 'controllers/settings_controller.dart';
+import 'utils/theme_manager.dart';
 import 'views/login_screen.dart';
 import 'views/dashboard_screen.dart';
 
@@ -18,71 +20,20 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthController()),
         ChangeNotifierProvider(create: (_) => EquipmentController()),
+        ChangeNotifierProvider(create: (_) => SettingsController()),
       ],
-      child: MaterialApp(
-        title: 'BMS Point Schedule - South Beach Weligama',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: const Color(0xFFF8FAFC),
-          appBarTheme: AppBarTheme(
-            backgroundColor: const Color(0xFF1E40AF),
-            foregroundColor: Colors.white,
-            elevation: 0,
-            centerTitle: true,
-            titleTextStyle: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.5,
+      child: Consumer<SettingsController>(
+        builder: (context, settingsController, child) {
+          return MaterialApp(
+            title: 'BMS Point Schedule - South Beach Weligama',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeManager.getTheme(
+              settingsController.isDarkMode,
+              settingsController.themeColor,
             ),
-            shadowColor: Colors.black.withOpacity(0.3),
-          ),
-          cardTheme: CardTheme(
-            elevation: 8,
-            shadowColor: Colors.black.withOpacity(0.15),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            color: Colors.white,
-            margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF3B82F6),
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 4,
-              shadowColor: Colors.blue.withOpacity(0.4),
-              textStyle: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 0.5,
-              ),
-            ),
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade300),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFF3B82F6), width: 2),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade300),
-            ),
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          ),
-        ),
-        home: const AuthWrapper(),
+            home: const AuthWrapper(),
+          );
+        },
       ),
     );
   }
