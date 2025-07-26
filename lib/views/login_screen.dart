@@ -19,9 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    // Pre-fill with test credentials for easy testing
-    _emailController.text = 'admin@gmail.com';
-    _passwordController.text = '@Admin123';
+    // Remove hardcoded credentials - let users enter their own
   }
 
   @override
@@ -40,14 +38,94 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       if (!success && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(authController.error ?? 'Login failed'),
-            backgroundColor: Colors.red,
-          ),
-        );
+        final errorMessage = authController.error ?? 'Login failed';
+        
+        // Check for specific error types
+        if (errorMessage.startsWith('ACCOUNT_DEACTIVATED:')) {
+          // Extract the actual message after the prefix
+          final message = errorMessage.substring('ACCOUNT_DEACTIVATED:'.length);
+          _showErrorDialog(
+            'Account Deactivated',
+            message,
+          );
+        } else if (errorMessage.contains('Incorrect password')) {
+          _showErrorDialog(
+            'Login Failed',
+            'The password you entered is incorrect. Please check your password and try again.',
+          );
+        } else if (errorMessage.contains('User not found')) {
+          _showErrorDialog(
+            'Login Failed', 
+            'No account found with this email address. Please check your email and try again.',
+          );
+        } else {
+          // Show other errors as snackbar
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(errorMessage),
+              backgroundColor: Colors.red,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          );
+        }
       }
     }
+  }
+
+  void _showErrorDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          title: Row(
+            children: [
+              Icon(
+                Icons.error_outline,
+                color: Colors.red[600],
+                size: 24,
+              ),
+              const SizedBox(width: 10),
+              Text(
+                title,
+                style: TextStyle(
+                  color: Colors.red[600],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          content: Text(
+            message,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.black87,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red[50],
+                foregroundColor: Colors.red[600],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text(
+                'OK',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

@@ -56,7 +56,9 @@ class AppDrawer extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            user?.name.substring(0, 1).toUpperCase() ?? 'U',
+                            (user?.name != null && user!.name.isNotEmpty) 
+                                ? user.name.substring(0, 1).toUpperCase() 
+                                : 'U',
                             style: const TextStyle(
                               color: Color(0xFF1E40AF),
                               fontWeight: FontWeight.bold,
